@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ludonarrative Diskurse in sozialen Medien – Dissertationsprojekt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dissertationsprojekt zu ludonarrativen Spielen und diskursiven Aushandlungen in sozialen Medien (Discord). Eine Studie an der Schnittstelle von germanistischer Linguistik, Game Studies und Ludologie." />
+
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --bg-alt: #ffffff;
+      --accent: #4154f1;
+      --accent-soft: rgba(65, 84, 241, 0.08);
+      --accent-dark: #2832a5;
+      --text: #1f2430;
+      --text-muted: #656c80;
+      --border-subtle: #e0e3f0;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.06);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #eef0ff 0, #f7f7fb 42%, #fdfdff 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(247, 247, 251, 0.92),
+        rgba(247, 247, 251, 0.88),
+        rgba(247, 247, 251, 0.8)
+      );
+      border-bottom: 1px solid rgba(224, 227, 240, 0.7);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #ffffff 0, #c7cffd 45%, #7b70ff 100%);
+      box-shadow: 0 10px 30px rgba(64, 78, 237, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .nav-title {
+      font-size: 0.94rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-block: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.18rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-chip {
+      font-size: 0.78rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(65, 84, 241, 0.06);
+      border: 1px solid rgba(65, 84, 241, 0.12);
+      color: var(--accent-dark);
+    }
+
+    .nav-button {
+      font-size: 0.84rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: #111827;
+      color: #f9fafb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.35);
+      transition: transform 140ms ease-out, box-shadow 140ms ease-out,
+        background var(--transition-fast);
+    }
+
+    .nav-button span.icon {
+      font-size: 1rem;
+      transform: translateY(0.5px);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+      background: #020617;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1040px;
+      margin: 1.8rem auto 1.8rem;
+      padding: 0 1.5rem 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.4fr);
+      gap: 2.4rem;
+    }
+
+    .hero-main-card {
+      background: radial-gradient(circle at top left, #ffffff 0, #f5f6ff 45%, #f7f7fb 100%);
+      border-radius: 32px;
+      padding: 1.8rem 1.8rem 1.7rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(224, 227, 240, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(15, 118, 110, 0.06);
+      color: #0f766e;
+      border: 1px solid rgba(45, 212, 191, 0.32);
+      margin-bottom: 1rem;
+    }
+
+    .hero-pill span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2.05rem, 2.7vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-sub {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-tag {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.9);
+      color: #475569;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-button-primary {
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      color: #f9fafb;
+      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+    }
+
+    .hero-button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 38px rgba(37, 99, 235, 0.5);
+    }
+
+    .hero-button-ghost {
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      font-size: 0.86rem;
+      background: rgba(248, 250, 252, 0.8);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #0f172a;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 0.84rem;
+      color: #0f172a;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 1.4rem;
+      top: 1.5rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.93);
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-badge span.icon {
+      font-size: 0.9rem;
+    }
+
+    .hero-badge span.label {
+      opacity: 0.86;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 1.1rem;
+      align-content: flex-start;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.3rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.76rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid rgba(65, 84, 241, 0.18);
+    }
+
+    .meta-list {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .meta-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.25rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .meta-list span.label {
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    /* Sections */
+    .sections {
+      max-width: 1040px;
+      margin: 0 auto 3.4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    section {
+      margin-bottom: 1.9rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.03);
+      font-size: 0.9rem;
+    }
+
+    .section-card ul {
+      padding-left: 1.1rem;
+      margin-top: 0.3rem;
+    }
+
+    .section-card li {
+      margin-bottom: 0.45rem;
+    }
+
+    .two-column-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.6rem 1.2rem;
+      font-size: 0.88rem;
+      margin-top: 0.35rem;
+    }
+
+    .status-grid {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.4rem;
+      font-size: 0.86rem;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .status-label {
+      color: var(--text-muted);
+    }
+
+    .status-pill {
+      font-size: 0.76rem;
+      padding: 0.14rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.08);
+      color: #15803d;
+      border: 1px solid rgba(34, 197, 94, 0.32);
+    }
+
+    .status-pill.pending {
+      background: rgba(234, 179, 8, 0.08);
+      color: #92400e;
+      border-color: rgba(234, 179, 8, 0.4);
+    }
+
+    .status-pill.planned {
+      background: rgba(59, 130, 246, 0.08);
+      color: #1d4ed8;
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .aside-card {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: var(--radius-xl);
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.7);
+      position: sticky;
+      top: 74px;
+      font-size: 0.9rem;
+    }
+
+    .aside-label {
+      font-size: 0.76rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 0.15rem;
+    }
+
+    .aside-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .aside-text {
+      font-size: 0.87rem;
+      color: #d1d5db;
+      margin-bottom: 0.8rem;
+    }
+
+    .aside-list {
+      list-style: none;
+      margin-bottom: 0.7rem;
+      font-size: 0.86rem;
+    }
+
+    .aside-list li {
+      margin-bottom: 0.35rem;
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .aside-list span.bullet {
+      font-size: 1rem;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .aside-meta {
+      margin-top: 0.65rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .aside-meta strong {
+      color: #e5e7eb;
+    }
+
+    .contact-box {
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.84rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+
+    .contact-pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+    .contact-pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 1rem 1.5rem 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    /* Anchor offset for sticky nav */
+    .anchor-offset {
+      scroll-margin-top: 80px;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 1.2rem;
+      }
+
+      .hero-main-card {
+        padding: 1.5rem 1.25rem 1.4rem;
+      }
+
+      .hero-badge {
+        position: static;
+        margin-bottom: 0.9rem;
+      }
+
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .aside-card {
+        position: static;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        order: 2;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.15rem;
+      }
+
+      .nav-cta {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-inline: 1.1rem;
+      }
+
+      .sections {
+        padding-inline: 1.1rem;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .two-column-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-inner {
+        padding-inline: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <div class="brand-logo">fx</div>
+          <div>
+            <div class="nav-title">Dissertationsprojekt</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#projekt">Projekt</a>
+          <a href="#fragen">Forschungsfragen</a>
+          <a href="#methodik">Methodik</a>
+          <a href="#korpus">Korpus</a>
+          <a href="#status">Status</a>
+        </nav>
+        <div class="nav-cta">
+          <div class="nav-chip">In Arbeit</div>
+          <button class="nav-button" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+            <span class="icon">✉️</span>
+            <span>Kontakt</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero anchor-offset" id="projekt">
+        <div class="hero-main-card">
+          <div class="hero-badge">
+            <span class="icon">🎮</span>
+            <span class="label">Ludologie × Linguistik × Game Studies</span>
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            <span>Dissertationsprojekt (germanistische Linguistik)</span>
+          </div>
+          <h1 class="hero-title">
+            Ludonarrative Diskurse in sozialen Medien
+          </h1>
+          <p class="hero-sub">
+            Das Projekt untersucht, wie Spieler:innen in sozialen Medien – insbesondere auf Discord – über moralische Entscheidungen, Agency und Konsequenzen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>) sprechen und verhandeln. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative Theorie.
+          </p>
+
+          <div class="hero-tags">
+            <span class="hero-tag">Ludonarrative Spiele</span>
+            <span class="hero-tag">Diskursanalyse</span>
+            <span class="hero-tag">Medienlinguistik</span>
+            <span class="hero-tag">Game Studies</span>
+            <span class="hero-tag">Soziale Medien / Discord</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="hero-button-primary" onclick="document.getElementById('fragen').scrollIntoView({behavior:'smooth'})">
+              <span>Zu den Forschungsfragen</span>
+              <span>↓</span>
+            </button>
+            <button class="hero-button-ghost" onclick="document.getElementById('status').scrollIntoView({behavior:'smooth'})">
+              <span>Projektstatus &amp; Förderung</span>
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <strong>Disziplin</strong>
+              <span>Germanistische Linguistik, Medienlinguistik</span>
+            </div>
+            <div class="hero-meta-item">
+              <strong>Schnittstellen</strong>
+              <span>Ludologie, Game Studies, Digital Culture</span>
+            </div>
+            <div class="hero-meta-item">
+              <strong>Empirie</strong>
+              <span>Discord-Diskurse, Interviews</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <article class="card">
+            <h3>Fokus des Projekts</h3>
+            <p>
+              Wie sprechen Spieler:innen darüber, was sie in Games tun, entscheiden und fühlen – und welche narrativen, moralischen und sozialen Ordnungen werden in diesen Gesprächen ausgehandelt?
+            </p>
+            <div class="chip-row">
+              <span class="chip">Agency &amp; Moral</span>
+              <span class="chip">Narrative Entscheidungsstrukturen</span>
+              <span class="chip">Community-Diskurse</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Rahmung</h3>
+            <ul class="meta-list">
+              <li>
+                <span class="label">Datenbasis</span>
+                <span>Discord-Server, thematische Communities</span>
+              </li>
+              <li>
+                <span class="label">Methodik</span>
+                <span>Qualitative Diskursanalyse, medienlinguistische Verfahren</span>
+              </li>
+              <li>
+                <span class="label">Zeithorizont</span>
+                <span>laufendes Dissertationsprojekt</span>
+              </li>
+            </ul>
+          </article>
+        </aside>
+      </section>
+
+      <!-- Main sections -->
+      <div class="sections">
+        <div>
+          <section class="anchor-offset" id="fragen">
+            <div class="section-label">Forschungsdesign</div>
+            <h2 class="section-title">Zentrale Forschungsfragen</h2>
+            <p class="section-sub">
+              Die Untersuchung verbindet linguistische Diskursanalyse mit ludologischen und game-studies-bezogenen Perspektiven. Im Zentrum stehen u. a. folgende Fragen:
+            </p>
+            <div class="section-card">
+              <ul>
+                <li>
+                  Wie sprechen Spieler:innen in sozialen Medien über moralische Entscheidungen, Agency und Konsequenzen in narrativen bzw. decision-basierten Spielen?
+                </li>
+                <li>
+                  Welche diskursiven Muster, Argumentationsfiguren und Positionierungspraktiken lassen sich in Diskussionen auf Discord identifizieren?
+                </li>
+                <li>
+                  Wie werden Spielerfahrungen sprachlich sozial geteilt – und wie beeinflusst dies die Bedeutungskonstitution der Spiele?
+                </li>
+                <li>
+                  Inwiefern eröffnen Spiele Räume, in denen Konsequenzen für das eigene Leben reflektiert und verhandelt werden?
+                </li>
+                <li>
+                  Welche Rückschlüsse erlaubt dies für ludonarrative und game-studies-spezifische Theorien von Agency, Moral und Narration?
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="anchor-offset" id="methodik">
+            <div class="section-label">Ansatz</div>
+            <h2 class="section-title">Methodik &amp; theoretischer Rahmen</h2>
+            <p class="section-sub">
+              Das Projekt ist qualitativ und diskursanalytisch angelegt und verortet sich in der Tradition der (deutschsprachigen) Medienlinguistik.
+            </p>
+            <div class="section-card">
+              <div class="two-column-list">
+                <div>
+                  <strong>Theoretische Perspektiven</strong>
+                  <ul>
+                    <li>Medienlinguistische Diskursanalyse</li>
+                    <li>Positionierungs- und Subjektivierungstheorien</li>
+                    <li>Ludologie und Narrative-Theorien</li>
+                    <li>Research on moral choice &amp; decision-based games</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong>Methodische Schritte</strong>
+                  <ul>
+                    <li>Identifikation relevanter Discord-Communities</li>
+                    <li>Qualitative Auswertung von Threads &amp; Gesprächen</li>
+                    <li>Feinanalysen von Schlüsselpassagen</li>
+                    <li>Geplantes Interviewformat mit Spieler:innen</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="anchor-offset" id="korpus">
+            <div class="section-label">Empirie</div>
+            <h2 class="section-title">Korpus &amp; Datengrundlage</h2>
+            <p class="section-sub">
+              Die Korpuserhebung erfolgt unter Berücksichtigung von Datenschutz, Forschungsethik und Plattformregeln.
+            </p>
+            <div class="section-card">
+              <ul>
+                <li>
+                  <strong>Plattformen:</strong> ausgewählte Discord-Server und ggf. angrenzende Social-Media-Plattformen (z. B. Foren, Subreddits) mit Fokus auf narrativen und moralisch aufgeladenen Spielen.
+                </li>
+                <li>
+                  <strong>Material:</strong> Diskussions-Threads, Chatverläufe, argumentativ geprägte Passagen, narrative Rahmungen von Spielerfahrungen.
+                </li>
+                <li>
+                  <strong>Zusatzempirie:</strong> Interview- bzw. Gesprächsformate mit Spieler:innen zu Entscheidungsdilemmata, Moral und persönlicher Relevanz der Spiele.
+                </li>
+                <li>
+                  <strong>Ethik:</strong> Anonymisierung von Nutzernamen, verantwortungsvolle Zitation und transparente Einbettung in aktuelle Forschungsethik-Debatten.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="anchor-offset" id="status">
+            <div class="section-label">Projektstand</div>
+            <h2 class="section-title">Status &amp; geplante Förderung</h2>
+            <p class="section-sub">
+              Das Projekt befindet sich in der Ausarbeitung und in der Phase der Einwerbung von Promotionsförderung.
+            </p>
+            <div class="section-card">
+              <div class="status-grid">
+                <div class="status-item">
+                  <span class="status-label">Konzeption &amp; Exposé</span>
+                  <span class="status-pill">weitgehend ausgearbeitet</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Methodik &amp; Design</span>
+                  <span class="status-pill planned">feinjustiert, in Umsetzung</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Korpusaufbau</span>
+                  <span class="status-pill planned">in Planung / Pilotierung</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">Förderanträge</span>
+                  <span class="status-pill pending">Böll, Rosa Luxemburg, Studienstiftung</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Aside / Kontakt -->
+        <aside class="aside-card anchor-offset" id="kontakt">
+          <div class="aside-label">Kontakt &amp; Kurzprofil</div>
+          <div class="aside-title">Ansprechperson für das Projekt</div>
+          <p class="aside-text">
+            Für Rückfragen, Austausch, Workshops, Vorträge oder Kooperationen im Bereich Game Studies, Medienlinguistik und ludonarrative Analysen können Sie mich gerne kontaktieren.
+          </p>
+
+          <ul class="aside-list">
+            <li>
+              <span class="bullet">›</span>
+              <span>Promotionsprojekt in der germanistischen Linguistik mit Schwerpunkt Medienlinguistik / Diskursanalyse.</span>
+            </li>
+            <li>
+              <span class="bullet">›</span>
+              <span>Interdisziplinäre Verortung an der Schnittstelle von Linguistik, Ludologie und Game Studies.</span>
+            </li>
+            <li>
+              <span class="bullet">›</span>
+              <span>Forschungsinteressen u. a.: Spieler:innen-Subjektivität, Moral in Games, digitale Diskurse, Community-Praktiken.</span>
+            </li>
+          </ul>
+
+          <div class="contact-box">
+            <strong>Kontakt</strong>
+            <div class="contact-row">
+              <!-- Ersetze die Platzhalter unten durch deine echten Daten -->
+              <div class="contact-pill">
+                <span class="icon">✉️</span>
+                <span>vorname.nachname(at)uni.tld</span>
+              </div>
+              <div class="contact-pill">
+                <span class="icon">🧬</span>
+                <span>ORCID: 0000-0000-0000-0000</span>
+              </div>
+              <div class="contact-pill">
+                <span class="icon">🌐</span>
+                <span>CV / Profil-Link</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="aside-meta">
+            <strong>Hinweis:</strong> Diese Seite dient als kompaktes Informationsangebot zum Dissertationsprojekt und kann in Ausschreibungen, Calls und Bewerbungen verlinkt werden.
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> – Dissertationsprojekt „Ludonarrative Diskurse in sozialen Medien“</div>
+        <div class="footer-links">
+          <!-- Optional: Impressum / Datenschutz, falls erforderlich -->
+          <a href="#projekt">Nach oben</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // dynamisches Jahr im Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

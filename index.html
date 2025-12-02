@@ -364,18 +364,20 @@
       align-content: flex-start;
     }
 
-    /* Hero-Banner */
-    .hero-banner-wrapper {
-      max-width: 1040px;
-      margin: -0.5rem auto 2rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .hero-banner {
-      width: 100%;
-      border-radius: 22px;
+    .hero-thumbnail-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 0.45rem;
+      border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
     }
+    
+    .hero-thumbnail {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+    }
+
 
     .card {
       background: var(--bg-alt);
@@ -801,6 +803,10 @@
         </div>
 
         <aside class="hero-side">
+            <!-- Thumbnail-Bild -->
+  <div class="hero-thumbnail-card">
+    <img src="./Diskursive Aushandlung von Unsicherheit.png" alt="Projektbild" class="hero-thumbnail">
+  </div>
           <article class="card">
             <h3>Fokus des Projekts</h3>
             <p>

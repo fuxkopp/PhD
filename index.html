@@ -334,10 +334,9 @@
     }
 
     .hero-badge {
-      /* NICHT mehr absolut positionieren */
       position: relative;
-      margin-left: auto;         /* nach rechts schieben */
-      margin-bottom: 0.9rem;     /* Abstand nach unten zur Pill */
+      margin-left: auto;
+      margin-bottom: 0.9rem;
       padding: 0.5rem 0.85rem;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.93);
@@ -348,7 +347,6 @@
       gap: 0.4rem;
       box-shadow: none;
     }
-
 
     .hero-badge span.icon {
       font-size: 0.9rem;
@@ -364,23 +362,33 @@
       align-content: flex-start;
     }
 
+    /* Thumbnail rechts über "Fokus des Projekts" */
     .hero-thumbnail-card {
       border-radius: var(--radius-lg);
-      overflow: hidden;     /* wichtig: macht das Bild sauber rund an den Ecken */
-      padding: 0;           /* kein Innenabstand */
-      border: none;         /* kein Rahmen */
-      background: none;     /* Box unsichtbar */
-      box-shadow: none;     /* kein Schatten */
+      overflow: hidden;
+      padding: 0;
+      border: none;
+      background: none;
+      box-shadow: none;
     }
     .hero-thumbnail {
       width: 100%;
       display: block;
-      border-radius: var(--radius-lg);  /* gleiche Rundung wie die Box */
-    }
-    
-lay: block;
+      border-radius: var(--radius-lg);
     }
 
+    /* Hero-Banner unter dem Hero (breit) */
+    .hero-banner-wrapper {
+      max-width: 1040px;
+      margin: 0 auto 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-banner {
+      width: 100%;
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+    }
 
     .card {
       background: var(--bg-alt);
@@ -427,6 +435,19 @@ lay: block;
     }
 
     .meta-list span.label {
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    /* Speziell: Rahmung-Karte bündig (Label oben, Text darunter) */
+    .rahmung-card .meta-list li {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .rahmung-card .meta-list .label {
+      display: block;
+      margin-bottom: 0.1rem;
       color: #0f172a;
       font-weight: 500;
     }
@@ -806,10 +827,11 @@ lay: block;
         </div>
 
         <aside class="hero-side">
-            <!-- Thumbnail-Bild -->
-  <div class="hero-thumbnail-card">
-    <img src="./Diskursive Aushandlung von Unsicherheit.png" alt="Projektbild" class="hero-thumbnail">
-  </div>
+          <!-- Thumbnail-Bild -->
+          <div class="hero-thumbnail-card">
+            <img src="./Diskursive Aushandlung von Unsicherheit.png" alt="Projektbild" class="hero-thumbnail">
+          </div>
+
           <article class="card">
             <h3>Fokus des Projekts</h3>
             <p>
@@ -822,7 +844,7 @@ lay: block;
             </div>
           </article>
 
-          <article class="card">
+          <article class="card rahmung-card">
             <h3>Rahmung</h3>
             <ul class="meta-list">
               <li>

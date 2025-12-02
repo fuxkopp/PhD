@@ -51,19 +51,29 @@
       max-width: 100%;
       display: block;
     }
+
     .aside-image-wrapper {
-  margin: 0.8rem 0 1.2rem 0;
-  text-align: center;
-}
+      margin: 0.8rem 0 1.2rem 0;
+      text-align: center;
+    }
 
-.aside-image {
-  width: 95%;
-  max-width: 160px;
-  border-radius: 18px; /* abgerundete Ecken – nicht kreisrund */
-  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
-  border: 2px solid rgba(255,255,255,0.12);
-}
+    .aside-image {
+      width: 95%;
+      max-width: 160px;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+      border: 2px solid rgba(255,255,255,0.12);
+    }
 
+    .contact-link-light {
+      color: #e5e7eb !important;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-link-light:hover {
+      color: #ffffff !important;
+    }
 
     /* Layout */
     .page {
@@ -151,16 +161,7 @@
     .nav-links a:hover::after {
       width: 100%;
     }
-    
-.contact-link-light {
-  color: #e5e7eb !important;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
 
-.contact-link-light:hover {
-  color: #ffffff !important;
-}
     .nav-cta {
       display: flex;
       align-items: center;
@@ -361,12 +362,19 @@
       align-content: flex-start;
     }
 
-    <div class="hero-banner-wrapper">
-      <img src="./Diskursive Aushandlung von Unsicherheit.png" class="hero-banner" alt="Projektbild">
-    </div>
+    /* Hero-Banner */
+    .hero-banner-wrapper {
+      max-width: 1040px;
+      margin: -0.5rem auto 2rem auto;
+      padding: 0 1.5rem;
+    }
 
+    .hero-banner {
+      width: 100%;
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+    }
 
-    
     .card {
       background: var(--bg-alt);
       border-radius: var(--radius-lg);
@@ -656,18 +664,6 @@
         margin-bottom: 0.9rem;
       }
 
-      .hero-banner-wrapper {
-        grid-column: 1 / -1;
-        margin-top: -0.5rem;
-        margin-bottom: 2rem;
-      }
-      
-      .hero-banner {
-        width: 100%;
-        border-radius: 22px;
-        box-shadow: var(--shadow-soft);
-      }
-      
       .sections {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -691,14 +687,18 @@
       .nav-cta {
         margin-left: auto;
       }
+
+      .hero-banner-wrapper {
+        padding: 0 1.1rem;
+      }
+
+      .sections {
+        padding-inline: 1.1rem;
+      }
     }
 
     @media (max-width: 600px) {
       .hero {
-        padding-inline: 1.1rem;
-      }
-
-      .sections {
         padding-inline: 1.1rem;
       }
 
@@ -732,7 +732,7 @@
           <a href="#methodik">Methodik</a>
           <a href="#korpus">Korpus</a>
           <a href="#status">Status</a>
-          <a href="#status">Betreuung</a>
+          <a href="#betreuung">Betreuung</a>
           <a href="#person">Person</a>
         </nav>
         <div class="nav-cta">
@@ -761,7 +761,7 @@
             Diskursive Aushandlung von Unsicherheit
           </h1>
           <p class="hero-sub">
-            Das Projekt untersucht, wie Spieler:innen in sozialen Medien – insbesondere auf Discord – über moralische Entscheidungen, Agency und Konsequenzen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>, <em>Helldivers 2</em>, <em>Hades 2</em>, <em>Frostpunk, <em>This War of Mine</em></em>) sprechen und verhandeln. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative Theorie.
+            Das Projekt untersucht, wie Spieler:innen in sozialen Medien – insbesondere auf Discord – über moralische Entscheidungen, Agency und Konsequenzen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>, <em>Helldivers 2</em>, <em>Hades 2</em>, <em>Frostpunk</em>, <em>This War of Mine</em>) sprechen und verhandeln. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative Theorie.
           </p>
 
           <div class="hero-tags">
@@ -830,6 +830,11 @@
           </article>
         </aside>
       </section>
+
+      <!-- Hero-Banner -->
+      <div class="hero-banner-wrapper">
+        <img src="./Diskursive Aushandlung von Unsicherheit.png" alt="Projektbild" class="hero-banner">
+      </div>
 
       <!-- Main sections -->
       <div class="sections">
@@ -943,40 +948,47 @@
             </div>
           </section>
 
-<section class="anchor-offset" id="betreuung">
-  <div class="section-label">Institutioneller Rahmen</div>
-  <h2 class="section-title">Betreuung &amp; Institution</h2>
-  <p class="section-sub">
-    Das Dissertationsprojekt ist in einem universitären Kontext der germanistischen Linguistik verankert und wird fachlich durch die Schnittstelle von Linguistik, Medien- und Game Studies gerahmt.
-  </p>
+          <section class="anchor-offset" id="betreuung">
+            <div class="section-label">Institutioneller Rahmen</div>
+            <h2 class="section-title">Betreuung &amp; Institution</h2>
+            <p class="section-sub">
+              Das Dissertationsprojekt ist in einem universitären Kontext der germanistischen Linguistik verankert und wird fachlich durch die Schnittstelle von Linguistik, Medien- und Game Studies gerahmt.
+            </p>
 
-  <div class="section-card">
-    <ul>
-      <li>
-        <strong>Institution:</strong>
-        <span>Technische Universität Dresden, Institut für Germanistik und Medienkulturen, Professur für Germanistische Linguistik und Sprachgeschichte</span>
-      </li>
-      <li>
-        <strong>Fachgebiet:</strong>
-        <span>Germanistische Linguistik mit Schwerpunkt Medienlinguistik und Diskursanalyse; Anbindung an Game Studies / Ludologie.</span>
-      </li>
-      <li>
-        <strong>Betreuung:</strong>
-        <span><a href="https://www.gls-dresden.de/team/alexander-lasch/" target="_blank" rel="noopener">Prof. Dr. Alexander Lasch </a> (Erstbetreuung)“ und Prof. Dr. Simon Meier-Vieracker (Zweitbetreuung) (aka <a href="https://www.instagram.com/fussballinguist/" target="_blank" "rel="noopener"> "fussballinguist"</a>).</span>
-      </li>
-      <li>
-        <strong>Einbettung:</strong>
-        <span>Verortung in laufenden Forschungszusammenhängen, Kolloquien, Graduiertenprogrammen oder thematisch passenden Forschungsschwerpunkten (z. B. digitale Diskurse, Medienkommunikation, Spielkulturen).</span>
-      </li>
-      <li>
-        <strong>Promotionsform:</strong>
-        <span>Individuelle Promotion / strukturierte Promotion (Graduiertenkolleg, Promotionsprogramm etc.).</span>
-      </li>
-    </ul>
-  </div>
-</section>
+            <div class="section-card">
+              <ul>
+                <li>
+                  <strong>Institution:</strong>
+                  <span>Technische Universität Dresden, Institut für Germanistik und Medienkulturen, Professur für Germanistische Linguistik und Sprachgeschichte</span>
+                </li>
+                <li>
+                  <strong>Fachgebiet:</strong>
+                  <span>Germanistische Linguistik mit Schwerpunkt Medienlinguistik und Diskursanalyse; Anbindung an Game Studies / Ludologie.</span>
+                </li>
+                <li>
+                  <strong>Betreuung:</strong>
+                  <span>
+                    <a href="https://www.gls-dresden.de/team/alexander-lasch/" target="_blank" rel="noopener">
+                      Prof. Dr. Alexander Lasch
+                    </a> (Erstbetreuung) und
+                    <a href="https://tu-dresden.de/gsw/slk/germanistik/ig/medienlinguistik/die-professur/inhaber" target="_blank" rel="noopener">
+                      Prof. Dr. Simon Meier-Vieracker
+                    </a> (Zweitbetreuung, „fussballinguist“ auf Instagram:
+                    <a href="https://www.instagram.com/fussballinguist/" target="_blank" rel="noopener">@fussballinguist</a>).
+                  </span>
+                </li>
+                <li>
+                  <strong>Einbettung:</strong>
+                  <span>Verortung in laufenden Forschungszusammenhängen, Kolloquien und thematisch passenden Forschungsschwerpunkten (z. B. digitale Diskurse, Medienkommunikation, Spielkulturen).</span>
+                </li>
+                <li>
+                  <strong>Promotionsform:</strong>
+                  <span>Individuelle Promotion mit struktureller Anbindung an universitäre Graduiertenstrukturen.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-          
           <!-- Neue Sektion: Zur Person -->
           <section class="anchor-offset" id="person">
             <div class="section-label">Zur Person</div>
@@ -996,8 +1008,7 @@
                 </li>
                 <li>
                   <strong>Website:</strong>
-                  <a href="https://fuxkopp.de (in Arbeit)" target="_blank">https://fuxkopp.de (in Arbeit)</a>
-                  <!-- URL nach Bedarf anpassen -->
+                  <a href="https://fuxkopp.de" target="_blank">https://fuxkopp.de (in Arbeit)</a>
                 </li>
                 <li>
                   <strong>Communities:</strong>
@@ -1016,9 +1027,10 @@
         <aside class="aside-card anchor-offset" id="kontakt">
           <div class="aside-label">Kontakt &amp; Kurzprofil</div>
           <div class="aside-title">Ansprechperson für das Projekt</div>
+
           <div class="aside-image-wrapper">
-  <img src="./Bewerbungsfoto.jpg" alt="Portrait" class="aside-image">
-</div>
+            <img src="./Bewerbungsfoto.jpg" alt="Portrait" class="aside-image">
+          </div>
 
           <p class="aside-text">
             Für Rückfragen, Austausch, Workshops, Vorträge oder Kooperationen im Bereich Game Studies, Medienlinguistik und ludonarrative Analysen können Sie mich gerne kontaktieren.
@@ -1039,25 +1051,22 @@
             </li>
           </ul>
 
-<div class="contact-box">
-  <strong>Kontakt</strong>
-  <div class="contact-row">
+          <div class="contact-box">
+            <strong>Kontakt</strong>
+            <div class="contact-row">
+              <div class="contact-pill">
+                <span class="icon">✉️</span>
+                <span>alexander_baertl(at)gmx.de</span>
+              </div>
 
-    <div class="contact-pill">
-      <span class="icon">✉️</span>
-      <span>alexander_baertl(at)gmx.de</span>
-    </div>
-
-    <div class="contact-pill">
-      <span class="icon">🌐</span>
-      <a class="contact-link-light" href="https://fuxkopp.de" target="_blank">
-        Website (in Arbeit)
-      </a>
-    </div>
-
-  </div>
-</div>
-
+              <div class="contact-pill">
+                <span class="icon">🌐</span>
+                <a class="contact-link-light" href="https://fuxkopp.de" target="_blank">
+                  Website (in Arbeit)
+                </a>
+              </div>
+            </div>
+          </div>
 
           <div class="aside-meta">
             <strong>Hinweis:</strong> Diese Seite dient als kompaktes Informationsangebot zum Dissertationsprojekt und kann in Ausschreibungen, Calls und Bewerbungen verlinkt werden.
@@ -1070,7 +1079,6 @@
       <div class="footer-inner">
         <div>© <span id="year"></span> – Dissertationsprojekt „Diskursive Aushandlung von Unsicherheit: Reflexionen in Spieler:innen-Communities narrativer Computerspiele“</div>
         <div class="footer-links">
-          <!-- Optional: Impressum / Datenschutz, falls erforderlich -->
           <a href="#projekt">Nach oben</a>
         </div>
       </div>

@@ -365,17 +365,20 @@
     }
 
     .hero-thumbnail-card {
-      background: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 0.45rem;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
+      overflow: hidden;     /* wichtig: macht das Bild sauber rund an den Ecken */
+      padding: 0;           /* kein Innenabstand */
+      border: none;         /* kein Rahmen */
+      background: none;     /* Box unsichtbar */
+      box-shadow: none;     /* kein Schatten */
     }
-    
     .hero-thumbnail {
       width: 100%;
-      border-radius: 14px;
       display: block;
+      border-radius: var(--radius-lg);  /* gleiche Rundung wie die Box */
+    }
+    
+lay: block;
     }
 
 

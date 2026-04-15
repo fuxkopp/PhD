@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Dissertationsprojekt zu ludonarrativen Spielen und diskursiven Aushandlungen in sozialen Medien (Discord). Eine Studie an der Schnittstelle von germanistischer Linguistik, Game Studies und Ludologie." />
 
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-  
   <style>
     :root {
       --bg: #f7f7fb;
@@ -48,6 +46,7 @@
       text-underline-offset: 3px;
       text-decoration-thickness: 1.5px;
     }
+
     a:hover {
       color: var(--accent);
     }
@@ -367,7 +366,6 @@
       align-content: flex-start;
     }
 
-    /* Thumbnail rechts über "Fokus des Projekts" */
     .hero-thumbnail-card {
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -376,13 +374,13 @@
       background: none;
       box-shadow: none;
     }
+
     .hero-thumbnail {
       width: 100%;
       display: block;
       border-radius: var(--radius-lg);
     }
 
-    /* Hero-Banner unter dem Hero (breit) */
     .hero-banner-wrapper {
       max-width: 1040px;
       margin: 0 auto 2rem auto;
@@ -444,7 +442,6 @@
       font-weight: 500;
     }
 
-    /* Speziell: Rahmung-Karte bündig (Label oben, Text darunter) */
     .rahmung-card .meta-list li {
       display: block;
       margin-bottom: 0.5rem;
@@ -620,8 +617,12 @@
     .contact-box {
       margin-top: 0.7rem;
       padding-top: 0.7rem;
-      border-top: 1px solid rgba(55, 65, 81, 0.9);
+      border-top: 1px solid rgba(55, 65, 81, 0.18);
       font-size: 0.84rem;
+    }
+
+    .aside-card .contact-box {
+      border-top-color: rgba(55, 65, 81, 0.9);
     }
 
     .contact-row {
@@ -632,18 +633,67 @@
     }
 
     .contact-pill {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
       font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease, color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .contact-pill:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .contact-pill:active {
+      transform: translateY(0);
+    }
+
+    .contact-pill:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     .contact-pill span.icon {
       font-size: 0.9rem;
+    }
+
+    /* Contact pills in light sections */
+    .section-card .contact-pill,
+    .section-card .contact-pill:link,
+    .section-card .contact-pill:visited {
+      color: #1f2430;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .section-card .contact-pill:hover,
+    .section-card .contact-pill:focus-visible {
+      color: #0f172a;
+      background: #eef2ff;
+      border-color: rgba(65, 84, 241, 0.35);
+    }
+
+    /* Contact pills in dark aside */
+    .aside-card .contact-pill,
+    .aside-card .contact-pill:link,
+    .aside-card .contact-pill:visited {
+      color: #e5e7eb;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .aside-card .contact-pill:hover,
+    .aside-card .contact-pill:focus-visible {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.35);
     }
 
     /* Footer */
@@ -676,12 +726,10 @@
       text-underline-offset: 3px;
     }
 
-    /* Anchor offset for sticky nav */
     .anchor-offset {
       scroll-margin-top: 80px;
     }
 
-    /* Responsive */
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -759,6 +807,7 @@
             <div class="nav-title">Dissertationsprojekt</div>
           </div>
         </div>
+
         <nav class="nav-links">
           <a href="#projekt">Projekt</a>
           <a href="#fragen">Forschungsfragen</a>
@@ -768,8 +817,8 @@
           <a href="#betreuung">Betreuung</a>
           <a href="#person">Person</a>
           <a href="#datenschutz">Datenschutz</a>
-
         </nav>
+
         <div class="nav-cta">
           <div class="nav-chip">In Arbeit</div>
           <button class="nav-button" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
@@ -781,20 +830,22 @@
     </header>
 
     <main>
-      <!-- Hero -->
       <section class="hero anchor-offset" id="projekt">
         <div class="hero-main-card">
           <div class="hero-badge">
             <span class="icon">🎮</span>
             <span class="label">Ludologie × Linguistik × Game Studies</span>
           </div>
+
           <div class="hero-pill">
             <span class="dot"></span>
             <span>Dissertationsprojekt (germanistische Linguistik)</span>
           </div>
+
           <h1 class="hero-title">
             Diskursive Aushandlung von Unsicherheit
           </h1>
+
           <p class="hero-sub">
             Das Projekt untersucht, wie Spieler:innen in sozialen Medien – insbesondere auf Discord – über moralische Entscheidungen, Agency und Konsequenzen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>, <em>Helldivers 2</em>, <em>Hades 2</em>, <em>Frostpunk</em>, <em>This War of Mine</em>, <em>The Walking Dead: The Telltale Series</em>) sprechen und verhandeln. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative Theorie.
           </p>
@@ -834,7 +885,6 @@
         </div>
 
         <aside class="hero-side">
-          <!-- Thumbnail-Bild -->
           <div class="hero-thumbnail-card">
             <img src="./Diskursive Aushandlung von Unsicherheit.png" alt="Projektbild" class="hero-thumbnail">
           </div>
@@ -871,8 +921,6 @@
         </aside>
       </section>
 
-
-      <!-- Main sections -->
       <div class="sections">
         <div>
           <section class="anchor-offset" id="fragen">
@@ -883,21 +931,11 @@
             </p>
             <div class="section-card">
               <ul>
-                <li>
-                  Wie sprechen Spieler:innen in sozialen Medien über moralische Entscheidungen, Agency und Konsequenzen in narrativen bzw. decision-basierten Spielen?
-                </li>
-                <li>
-                  Welche diskursiven Muster, Argumentationsfiguren und Positionierungspraktiken lassen sich in Diskussionen auf Discord identifizieren?
-                </li>
-                <li>
-                  Wie werden Spielerfahrungen sprachlich sozial geteilt – und wie beeinflusst dies die Bedeutungskonstitution der Spiele?
-                </li>
-                <li>
-                  Inwiefern eröffnen Spiele Räume, in denen Konsequenzen für das eigene Leben reflektiert und verhandelt werden?
-                </li>
-                <li>
-                  Welche Rückschlüsse erlaubt dies für ludonarrative und game-studies-spezifische Theorien von Agency, Moral und Narration?
-                </li>
+                <li>Wie sprechen Spieler:innen in sozialen Medien über moralische Entscheidungen, Agency und Konsequenzen in narrativen bzw. decision-basierten Spielen?</li>
+                <li>Welche diskursiven Muster, Argumentationsfiguren und Positionierungspraktiken lassen sich in Diskussionen auf Discord identifizieren?</li>
+                <li>Wie werden Spielerfahrungen sprachlich sozial geteilt – und wie beeinflusst dies die Bedeutungskonstitution der Spiele?</li>
+                <li>Inwiefern eröffnen Spiele Räume, in denen Konsequenzen für das eigene Leben reflektiert und verhandelt werden?</li>
+                <li>Welche Rückschlüsse erlaubt dies für ludonarrative und game-studies-spezifische Theorien von Agency, Moral und Narration?</li>
               </ul>
             </div>
           </section>
@@ -940,31 +978,24 @@
             </p>
             <div class="section-card">
               <ul>
-                <li>
-                  <strong>Plattformen:</strong> ausgewählte Discord-Server und ggf. angrenzende Social-Media-Plattformen (z. B. Foren, Subreddits) mit Fokus auf narrativen und moralisch aufgeladenen Spielen.
-                </li>
-                <li>
-                  <strong>Material:</strong> Diskussions-Threads, Chatverläufe, argumentativ geprägte Passagen, narrative Rahmungen von Spielerfahrungen.
-                </li>
-                <li>
-                  <strong>Zusatzempirie:</strong> Interview- bzw. Gesprächsformate mit Spieler:innen zu Entscheidungsdilemmata, Moral und persönlicher Relevanz der Spiele.
-                </li>
-                <li>
-                  <strong>Ethik:</strong> Anonymisierung von Nutzernamen, verantwortungsvolle Zitation und transparente Einbettung in aktuelle Forschungsethik-Debatten.
-                </li>
+                <li><strong>Plattformen:</strong> ausgewählte Discord-Server und ggf. angrenzende Social-Media-Plattformen (z. B. Foren, Subreddits) mit Fokus auf narrativen und moralisch aufgeladenen Spielen.</li>
+                <li><strong>Material:</strong> Diskussions-Threads, Chatverläufe, argumentativ geprägte Passagen, narrative Rahmungen von Spielerfahrungen.</li>
+                <li><strong>Zusatzempirie:</strong> Interview- bzw. Gesprächsformate mit Spieler:innen zu Entscheidungsdilemmata, Moral und persönlicher Relevanz der Spiele.</li>
+                <li><strong>Ethik:</strong> Anonymisierung von Nutzernamen, verantwortungsvolle Zitation und transparente Einbettung in aktuelle Forschungsethik-Debatten.</li>
               </ul>
             </div>
           </section>
 
           <section>
- <h2 class="section-title">Call for Participants</h2>
-<p> Für die Pilotphase suche ich nach Interviewteilnehmenden, die Erfahrungen mit einem oder mehreren der Spiele (siehe Projektabriss ganz oben) haben. 2026/27 steht dann die Hauptphase an, für die erneute, methodisch finalisierte Interviews durchgeführt werden. 
-  <a href="Call%20for%20Interviews%20%E2%80%93%20Dystopian%20Video%20Games.pdf" target="_blank">
-    Call for Interviews – Dystopian Video Games (PDF)
-  </a>
-</p>
-</section>
-          
+            <h2 class="section-title">Call for Participants</h2>
+            <p>
+              Für die Pilotphase suche ich nach Interviewteilnehmenden, die Erfahrungen mit einem oder mehreren der Spiele (siehe Projektabriss ganz oben) haben. 2026/27 steht dann die Hauptphase an, für die erneute, methodisch finalisierte Interviews durchgeführt werden.
+              <a href="Call%20for%20Interviews%20%E2%80%93%20Dystopian%20Video%20Games.pdf" target="_blank" rel="noopener noreferrer">
+                Call for Interviews – Dystopian Video Games (PDF)
+              </a>
+            </p>
+          </section>
+
           <section class="anchor-offset" id="status">
             <div class="section-label">Projektstand</div>
             <h2 class="section-title">Status &amp; geplante Förderung</h2>
@@ -1013,13 +1044,11 @@
                 <li>
                   <strong>Betreuung:</strong>
                   <span>
-                    <a href="https://www.gls-dresden.de/team/alexander-lasch/" target="_blank" rel="noopener">
-                      Prof. Dr. Alexander Lasch
-                    </a> (Erstbetreuung) und
-                    <a href="https://tu-dresden.de/gsw/slk/germanistik/ig/medienlinguistik/die-professur/inhaber" target="_blank" rel="noopener">
-                      Prof. Dr. Simon Meier-Vieracker
-                    </a> (Zweitbetreuung, „fussballinguist“ auf Instagram:
-                    <a href="https://www.instagram.com/fussballinguist/" target="_blank" rel="noopener">@fussballinguist</a>).
+                    <a href="https://www.gls-dresden.de/team/alexander-lasch/" target="_blank" rel="noopener noreferrer">Prof. Dr. Alexander Lasch</a>
+                    (Erstbetreuung) und
+                    <a href="https://tu-dresden.de/gsw/slk/germanistik/ig/medienlinguistik/die-professur/inhaber" target="_blank" rel="noopener noreferrer">Prof. Dr. Simon Meier-Vieracker</a>
+                    (Zweitbetreuung, „fussballinguist“ auf Instagram:
+                    <a href="https://www.instagram.com/fussballinguist/" target="_blank" rel="noopener noreferrer">@fussballinguist</a>).
                   </span>
                 </li>
                 <li>
@@ -1034,7 +1063,6 @@
             </div>
           </section>
 
-          <!-- Neue Sektion: Zur Person -->
           <section class="anchor-offset" id="person">
             <div class="section-label">Zur Person</div>
             <h2 class="section-title">Über mich</h2>
@@ -1053,7 +1081,7 @@
                 </li>
                 <li>
                   <strong>Website:</strong>
-                  <a href="https://fuxkopp.de" target="_blank">https://fuxkopp.de (in Arbeit)</a>
+                  <a href="https://fuxkopp.de" target="_blank" rel="noopener noreferrer">https://fuxkopp.de (in Arbeit)</a>
                 </li>
                 <li>
                   <strong>Communities:</strong>
@@ -1066,7 +1094,7 @@
               </ul>
             </div>
           </section>
-     <!-- Neue Sektion: Datenschutz -->
+
           <section class="anchor-offset" id="datenschutz">
             <div class="section-label">Datenschutz</div>
             <h2 class="section-title">Datenschutz und Rechtsgrundlagen</h2>
@@ -1077,7 +1105,7 @@
               <ul>
                 <li>
                   <strong>Datenschutzbeauftragter:</strong>
-                 Der Datenschutzbeauftragte der Technischen Universität Dresden ist erreichbar unter:
+                  Der Datenschutzbeauftragte der Technischen Universität Dresden ist erreichbar unter:
                   Technische Universität Dresden
                   Datenschutzbeauftragter
                   01062 Dresden
@@ -1090,52 +1118,37 @@
                   <strong>Zwecke und Rechtsgrundlagen der Verarbeitung:</strong>
                   Die Verarbeitung der Daten erfolgt zum Zweck der Durchführung und Auswertung des Online-Interviews im Rahmen des Forschungsvorhabens „Diskursive Aushandlung von Unsicherheit: Reflexionen über dystopisch-narrative Computerspiele durch Spieler:innen“. Das Transkript wird für die wissenschaftliche Analyse verwendet.
                   Die Rechtsgrundlage für die Datenverarbeitung zu den oben genannten Zwecken ist Art. 6 Abs. 1 UAbs. 1 lit. a und ggf. Art. 9 Abs. 2 lit. a DSGVO (Einwilligung). Die Vorgaben des § 12 SächsDSDG für die Verarbeitung personenbezogener Daten zu Forschungszwecken werden beachtet.
-             
                 </li>
                 <li>
                   <strong>Kategorien der verarbeiteten personenbezogenen Daten:</strong>
-                <b>Interviews:</b>Im Rahmen des online durchgeführten Interviews wird ausschließlich der Audioanteil aufgezeichnet. Eine Videoaufzeichnung findet nicht statt.
-                Es werden nur diejenigen personenbezogenen Daten verarbeitet, die sich naturgemäß aus der Interview-Situation ergeben, insbesondere:
-                •	Ihr Name
-                •	Ihre Stimme
-                •	Ihre Äußerungen bzw. die Inhalte des Interviews
-                •	Wahrnehmbare Merkmale der Umgebung, soweit diese akustisch erfasst werden
-                  <b>Discord-Chats:</b> Discord-Chats enthalten erfahrungsgemäß häufig besonders sensible Angaben, die als besondere Kategorien personenbezogener Daten im Sinne des Art. 9 Abs. 1 DSGVO zu qualifizieren sind. Hierzu zählen namentlich Gesundheitsdaten, politische und weltanschauliche Meinungen, Angaben zur sexuellen Orientierung, Informationen über Minderjährige und familiäre Umstände sowie religiöse oder weltanschauliche Überzeugungen. Derartige Inhalte können sowohl ausdrücklich als auch implizit in den Nachrichten enthalten sein. 
-                  Die geplante selektive Nichterhebung solcher Inhalte vermag eine zuverlässige Trennung technisch nicht sicherzustellen, da freie Textäußerungen einer automatisierten Vorab-Klassifikation nur eingeschränkt zugänglich sind. Damit ist der Anwendungsbereich des Art. 9 Abs. 1 DSGVO eröffnet.
+                  <b>Interviews:</b> Im Rahmen des online durchgeführten Interviews wird ausschließlich der Audioanteil aufgezeichnet. Eine Videoaufzeichnung findet nicht statt. Es werden nur diejenigen personenbezogenen Daten verarbeitet, die sich naturgemäß aus der Interview-Situation ergeben, insbesondere: Ihr Name, Ihre Stimme, Ihre Äußerungen bzw. die Inhalte des Interviews sowie wahrnehmbare Merkmale der Umgebung, soweit diese akustisch erfasst werden.
+                  <b>Discord-Chats:</b> Discord-Chats enthalten erfahrungsgemäß häufig besonders sensible Angaben, die als besondere Kategorien personenbezogener Daten im Sinne des Art. 9 Abs. 1 DSGVO zu qualifizieren sind. Hierzu zählen namentlich Gesundheitsdaten, politische und weltanschauliche Meinungen, Angaben zur sexuellen Orientierung, Informationen über Minderjährige und familiäre Umstände sowie religiöse oder weltanschauliche Überzeugungen. Derartige Inhalte können sowohl ausdrücklich als auch implizit in den Nachrichten enthalten sein. Die geplante selektive Nichterhebung solcher Inhalte vermag eine zuverlässige Trennung technisch nicht sicherzustellen, da freie Textäußerungen einer automatisierten Vorab-Klassifikation nur eingeschränkt zugänglich sind. Damit ist der Anwendungsbereich des Art. 9 Abs. 1 DSGVO eröffnet.
                 </li>
                 <li>
                   <strong>Vorgesehene Speicherdauer:</strong>
-                  Die Audio-Aufzeichnung dient ausschließlich der Erstellung einer automatisierten Transkription und wird gelöscht, sobald diese nicht mehr dem Forschungszweck dient, spätestens jedoch mit Ende des Projekts zum 01. Oktober 2028.                  
+                  Die Audio-Aufzeichnung dient ausschließlich der Erstellung einer automatisierten Transkription und wird gelöscht, sobald diese nicht mehr dem Forschungszweck dient, spätestens jedoch mit Ende des Projekts zum 01. Oktober 2028.
                 </li>
                 <li>
                   <strong>Forschungsziele und Schutzmaßnahmen:</strong>
-                  <b>Interviews:</b> Die Transkripte werden anonymisiert oder gelöscht, sobald diese nicht mehr dem Forschungszweck dienen, spätestens jedoch mit Ende des Projekts zum 01. Oktober 2028.
-                  Audioaufnahmen und Transkripte werden bis zur Anonymisierung bzw. Löschung in einem verschlüsselten Ordner auf Servern der TU Dresden gespeichert.
-                  <b>Discord-Chats:</b> Sofern einzelne Chat‑Nachrichten urheberrechtlich geschützt sind, stellt sich die Frage, ob das Scraping dieser Inhalte eine urheberrechtlich relevante Nutzung darstellt.
-                  Das Herunterladen, Zwischen- oder dauerhafte Speichern der Chat-Inhalte ist unabhängig von der verwendeten technischen Methode  als Vervielfältigung im Sinne des § 16 UrhG zu qualifizieren .
-                  Grundsätzlich steht das Recht zur Vervielfältigung ausschließlich den Urheber:innen zu, mithin den Verfasser:innen der jeweils urheberrechtlich geschützten Chat-Nachricht.
-                  Eine Nutzung durch Dritte kann jedoch durch vertragliche Vereinbarung oder gesetzliche Schrankenbestimmungen gerechtfertigt sein. Vorliegend kommt insbesondere § 60d UrhG (Text und Data Mining zu wissenschaftlichen Zwecken) als Erlaubnistatbestand in Betracht, der unter bestimmten Voraussetzungen auch Dritten eine Vervielfältigung der betroffenen Werke gestattet.
-                  Die Voraussetzungen des § 60d UrhG sind im vorliegenden Fall erfüllt. Das Forschungsvorhaben wird an einer Hochschule (Technische Universität Dresden) durchgeführt und verfolgt nicht-kommerzielle Zwecke. Der Zugang zu den Discord-Chat-Nachrichten ist rechtmäßig, sofern der Forschende als ordentliches Mitglied der jeweiligen Server Zugang zu den Inhalten hat. Vertragliche Nutzungsverbote in den Allgemeinen Geschäftsbedingungen von Discord sind nach § 60g Abs. 1 UrhG gegenüber Forschungsorganisationen unwirksam. Technische Schutzmaßnahmen der Plattform dürfen jedoch nicht aktiv umgangen werden. 
-                  Das Scraping von Chat-Nachrichten zum Zwecke des Text und Data Mining ist mithin nach § 60d UrhG zulässig. 
-                  Eine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO scheidet als taugliche Rechtsgrundlage aus. Dies beruht auf mehreren Erwägungen: Zum einen ist die Mehrzahl der potenziell betroffenen Nutzerinnen und Nutzer praktisch nicht erreichbar, da regelmäßig keine Kontaktinformationen vorliegen. Zum anderen würde eine selektive Einholung von Einwilligungen zu einem erheblichen Verzerrungseffekt (Non-Response-Bias) führen, der die wissenschaftliche Verwertbarkeit der Daten in Frage stellen würde. Schließlich ist die Einholung von Einwilligungen in Bezug auf in den Chats genannte Dritte, die selbst nicht an der Kommunikation teilgenommen haben, faktisch unmöglich.
+                  <b>Interviews:</b> Die Transkripte werden anonymisiert oder gelöscht, sobald diese nicht mehr dem Forschungszweck dienen, spätestens jedoch mit Ende des Projekts zum 01. Oktober 2028. Audioaufnahmen und Transkripte werden bis zur Anonymisierung bzw. Löschung in einem verschlüsselten Ordner auf Servern der TU Dresden gespeichert.
+                  <b>Discord-Chats:</b> Sofern einzelne Chat-Nachrichten urheberrechtlich geschützt sind, stellt sich die Frage, ob das Scraping dieser Inhalte eine urheberrechtlich relevante Nutzung darstellt. Das Herunterladen, Zwischen- oder dauerhafte Speichern der Chat-Inhalte ist unabhängig von der verwendeten technischen Methode als Vervielfältigung im Sinne des § 16 UrhG zu qualifizieren. Grundsätzlich steht das Recht zur Vervielfältigung ausschließlich den Urheber:innen zu, mithin den Verfasser:innen der jeweils urheberrechtlich geschützten Chat-Nachricht. Eine Nutzung durch Dritte kann jedoch durch vertragliche Vereinbarung oder gesetzliche Schrankenbestimmungen gerechtfertigt sein. Vorliegend kommt insbesondere § 60d UrhG (Text und Data Mining zu wissenschaftlichen Zwecken) als Erlaubnistatbestand in Betracht, der unter bestimmten Voraussetzungen auch Dritten eine Vervielfältigung der betroffenen Werke gestattet. Die Voraussetzungen des § 60d UrhG sind im vorliegenden Fall erfüllt. Das Forschungsvorhaben wird an einer Hochschule (Technische Universität Dresden) durchgeführt und verfolgt nicht-kommerzielle Zwecke. Der Zugang zu den Discord-Chat-Nachrichten ist rechtmäßig, sofern der Forschende als ordentliches Mitglied der jeweiligen Server Zugang zu den Inhalten hat. Vertragliche Nutzungsverbote in den Allgemeinen Geschäftsbedingungen von Discord sind nach § 60g Abs. 1 UrhG gegenüber Forschungsorganisationen unwirksam. Technische Schutzmaßnahmen der Plattform dürfen jedoch nicht aktiv umgangen werden. Das Scraping von Chat-Nachrichten zum Zwecke des Text und Data Mining ist mithin nach § 60d UrhG zulässig. Eine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO scheidet als taugliche Rechtsgrundlage aus. Dies beruht auf mehreren Erwägungen: Zum einen ist die Mehrzahl der potenziell betroffenen Nutzerinnen und Nutzer praktisch nicht erreichbar, da regelmäßig keine Kontaktinformationen vorliegen. Zum anderen würde eine selektive Einholung von Einwilligungen zu einem erheblichen Verzerrungseffekt (Non-Response-Bias) führen, der die wissenschaftliche Verwertbarkeit der Daten in Frage stellen würde. Schließlich ist die Einholung von Einwilligungen in Bezug auf in den Chats genannte Dritte, die selbst nicht an der Kommunikation teilgenommen haben, faktisch unmöglich.
                 </li>
                 <li>
-                <strong>Kontakt zur Geltendmachung von Betroffenenrechten:</strong>
-                <div class="contact-box">
-                  <div class="contact-row">
-                    <a href="mailto:alexander_baertl@gmx.de" class="contact-pill">
-                      <span class="icon">✉️</span>
-                      <span>alexander_baertl@gmx.de</span>
-                    </a>
+                  <strong>Kontakt zur Geltendmachung von Betroffenenrechten:</strong>
+                  <div class="contact-box">
+                    <div class="contact-row">
+                      <a href="mailto:alexander_baertl@gmx.de" class="contact-pill">
+                        <span class="icon">✉️</span>
+                        <span>alexander_baertl@gmx.de</span>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
               </ul>
             </div>
           </section>
         </div>
-       
-        <!-- Aside / Kontakt -->
+
         <aside class="aside-card anchor-offset" id="kontakt">
           <div class="aside-label">Kontakt &amp; Kurzprofil</div>
           <div class="aside-title">Ansprechperson für das Projekt</div>
@@ -1166,17 +1179,15 @@
           <div class="contact-box">
             <strong>Kontakt</strong>
             <div class="contact-row">
-              <div class="contact-pill">
+              <a href="mailto:alexander_baertl@gmx.de" class="contact-pill">
                 <span class="icon">✉️</span>
-                <span>alexander_baertl(at)gmx.de</span>
-              </div>
+                <span>alexander_baertl@gmx.de</span>
+              </a>
 
-              <div class="contact-pill">
+              <a href="https://fuxkopp.de" class="contact-pill" target="_blank" rel="noopener noreferrer">
                 <span class="icon">🌐</span>
-                <a class="contact-link-light" href="https://fuxkopp.de" target="_blank">
-                  Website (in Arbeit)
-                </a>
-              </div>
+                <span>Website (in Arbeit)</span>
+              </a>
             </div>
           </div>
 
@@ -1198,7 +1209,6 @@
   </div>
 
   <script>
-    // dynamisches Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>

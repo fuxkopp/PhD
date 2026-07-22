@@ -289,7 +289,8 @@
       display: none;
     }
 
-    .glossary-card summary::after {
+    .glossary-card summary::after,
+    .contact-card summary::after {
       content: "+";
       position: absolute;
       top: 50%;
@@ -304,7 +305,8 @@
       transition: transform var(--transition-fast);
     }
 
-    .glossary-card[open] summary::after {
+    .glossary-card[open] summary::after,
+    .contact-card[open] summary::after {
       content: "−";
     }
 
@@ -484,12 +486,6 @@
       list-style:none;
     }
     .contact-card summary::-webkit-details-marker{display:none;}
-    .contact-card summary::after{
-      content:"▸";
-      float:right;
-      transition:transform .2s ease;
-    }
-    .contact-card[open] summary::after{transform:rotate(90deg);}
     .contact-card .details-body{margin-top:1rem;}
 .sidebar-contact {
       display: grid;

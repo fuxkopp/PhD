@@ -480,13 +480,29 @@
     }
 
     
-    .contact-card summary{
-      cursor:pointer;
-      font-weight:700;
-      list-style:none;
+    .contact-card summary {
+      position: relative;
+      padding: 0.15rem 3rem 0.15rem 0;
+      color: #f8fafc;
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      user-select: none;
     }
-    .contact-card summary::-webkit-details-marker{display:none;}
-    .contact-card .details-body{margin-top:1rem;}
+
+    .contact-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .contact-card summary::after {
+      right: 0;
+      color: #c7d2fe;
+      background: rgba(99, 102, 241, 0.22);
+    }
+
+    .contact-card .details-body {
+      margin-top: 1rem;
+    }
 .sidebar-contact {
       display: grid;
       gap: 1.1rem;

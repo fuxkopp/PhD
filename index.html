@@ -263,6 +263,42 @@
       margin-bottom: 1.2rem;
     }
 
+    /* Kleine Begriffserklärung innerhalb der großen Projektbox */
+    .term-info {
+      margin: 0 0 1.15rem;
+      padding: 0.95rem 1rem;
+      background: linear-gradient(
+        135deg,
+        rgba(65, 84, 241, 0.09),
+        rgba(255, 255, 255, 0.72)
+      );
+      border: 1px solid rgba(65, 84, 241, 0.24);
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(40, 50, 165, 0.07);
+    }
+
+    .term-info__label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--accent-dark);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .term-info p {
+      margin: 0;
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .term-info strong {
+      font-weight: 700;
+    }
+
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
@@ -787,6 +823,10 @@
         font-size: 1.8rem;
       }
 
+      .term-info {
+        padding: 0.85rem 0.9rem;
+      }
+
       .two-column-list {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -849,18 +889,17 @@
           <p class="hero-sub">
             Das Projekt untersucht, wie Spieler:innen Dystopien, Unsicherheiten sowie moralische, gesellschaftliche und emotionale Fragestellungen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>, <em>Metro 2033</em>, <em>Fallout</em>, <em>Frostpunk</em>, <em>This War of Mine</em>, <em>The Walking Dead: The Telltale Series</em>) sprechen und wie sie sich dabei sprachlich positionieren, aufeinander Bezug nehmen und Resonanz erzeugen. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative und game-studies-bezogene Theorien von Agency, Moral und Narration.
           </p>
-      <div class="project-card">
-      
-        <!-- Kleine Box innerhalb der großen Box -->
-        <div class="term-info">
-          <span class="term-info__label">Begriffserklärung</span>
-      
-          <p>
-            Mit <strong>Positionierungs- und Resonanzpraktiken</strong> sind
-            sprachliche Formen des Sich-Positionierens, Aufeinander-Beziehens und
-            Reagierens in Community-Diskursen gemeint.
-          </p>
-        </div>
+
+          <div class="project-card">
+            <!-- Kleine Box innerhalb der großen Projektbox -->
+            <div class="term-info">
+              <span class="term-info__label">Begriffserklärung</span>
+              <p>
+                Mit <strong>Positionierungs- und Resonanzpraktiken</strong> sind
+                sprachliche Formen des Sich-Positionierens, Aufeinander-Beziehens
+                und Reagierens in Community-Diskursen gemeint.
+              </p>
+            </div>
 
           <div class="hero-tags">
             <span class="hero-tag">Ludonarrative Spiele</span>

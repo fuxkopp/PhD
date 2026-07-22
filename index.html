@@ -210,12 +210,9 @@
 
     /* Hero */
     .hero {
-      max-width: 1040px;
-      margin: 3.2rem auto 1.8rem;
-      padding: 0 1.5rem 1.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
-      gap: 2.4rem;
+      display: block;
+      margin: 0;
+      padding: 0;
     }
 
     .hero-main-card {
@@ -454,10 +451,35 @@
     }
 
     .hero-side {
+      display: contents;
+    }
+
+    .page-layout {
+      max-width: 1040px;
+      margin: 3.2rem auto 3.4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+      gap: 2.4rem;
+      align-items: start;
+    }
+
+    .content-column {
+      min-width: 0;
+    }
+
+    .side-column {
+      min-width: 0;
       display: grid;
       gap: 1.1rem;
-      align-content: flex-start;
+      align-content: start;
     }
+
+    .content-column > section,
+    .content-column > .anchor-offset {
+      margin-bottom: 1.9rem;
+    }
+
 
     .hero-thumbnail-card {
       border-radius: var(--radius-lg);
@@ -560,13 +582,9 @@
 
     /* Sections */
     .sections {
-      max-width: 1040px;
-      margin: 0 auto 3.4rem;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(280px, 1.3fr);
-      gap: 2rem;
-      align-items: flex-start;
+      display: block;
+      margin: 0;
+      padding: 0;
     }
 
     section {
@@ -755,9 +773,7 @@
     }
 
     .sidebar-stack {
-      display: grid;
-      gap: 1.1rem;
-      align-content: start;
+      display: contents;
     }
 
     .aside-label {
@@ -925,7 +941,7 @@
     }
 
     @media (max-width: 880px) {
-      .hero {
+      .page-layout {
         grid-template-columns: minmax(0, 1fr);
         margin-top: 1.2rem;
       }
@@ -938,9 +954,6 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .sections {
-        grid-template-columns: minmax(0, 1fr);
-      }
 
       .aside-card {
         position: static;
@@ -975,13 +988,10 @@
         padding: 0 1.1rem;
       }
 
-      .sections {
-        padding-inline: 1.1rem;
-      }
     }
 
     @media (max-width: 600px) {
-      .hero {
+      .page-layout {
         padding-inline: 1.1rem;
       }
 
@@ -1032,8 +1042,10 @@
     </header>
 
     <main>
-      <section class="hero anchor-offset" id="projekt">
-        <div class="hero-main-card">
+      <div class="page-layout">
+        <div class="content-column">
+          <section class="anchor-offset" id="projekt">
+            <div class="hero-main-card">
           <div class="hero-badge">
             <span class="icon">🎮</span>
             <span class="label">Ludologie × Linguistik × Game Studies</span>
@@ -1117,16 +1129,8 @@
             </article>
           </div>
         </div>
+          </section>
 
-        <aside class="hero-side">
-          <div class="hero-thumbnail-card">
-            <img src="./Diskursive Aushandlung des Dystopischen.png" alt="Projektbild" class="hero-thumbnail">
-          </div>
-        </aside>
-      </section>
-
-      <div class="sections">
-        <div>
           <section class="anchor-offset" id="fragen">
             <div class="section-label">Forschungsdesign</div>
             <h2 class="section-title">Zentrale Forschungsfragen</h2>
@@ -1385,7 +1389,11 @@
           </section>
         </div>
 
-        <aside class="sidebar-stack">
+        <aside class="side-column">
+          <div class="hero-thumbnail-card">
+            <img src="./Diskursive Aushandlung des Dystopischen.png" alt="Projektbild" class="hero-thumbnail">
+          </div>
+
           <details class="glossary-card">
             <summary>Begriffe kurz erklärt</summary>
             <div class="glossary-content">

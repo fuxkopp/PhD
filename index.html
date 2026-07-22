@@ -477,7 +477,21 @@
       height: 100%;
     }
 
-    .sidebar-contact {
+    
+    .contact-card summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+    }
+    .contact-card summary::-webkit-details-marker{display:none;}
+    .contact-card summary::after{
+      content:"▸";
+      float:right;
+      transition:transform .2s ease;
+    }
+    .contact-card[open] summary::after{transform:rotate(90deg);}
+    .contact-card .details-body{margin-top:1rem;}
+.sidebar-contact {
       display: grid;
       gap: 1.1rem;
       position: sticky;
@@ -1460,7 +1474,10 @@
             </div>
           </details>
 
-            <aside class="aside-card anchor-offset" id="kontakt">
+            <details class="aside-card contact-card anchor-offset" id="kontakt">
+  <summary>Kontakt</summary>
+  <div class="details-body">
+
           <div class="aside-label">Kontakt &amp; Kurzprofil</div>
           <div class="aside-title">Ansprechperson für das Projekt</div>
 
@@ -1505,7 +1522,9 @@
           <div class="aside-meta">
             <strong>Hinweis:</strong> Diese Seite dient als kompaktes Informationsangebot zum Dissertationsprojekt und kann in Ausschreibungen, Calls und Bewerbungen verlinkt werden.
           </div>
-        </aside>
+        
+  </div>
+</details>
           </div>
 
 

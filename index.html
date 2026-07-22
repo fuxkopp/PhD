@@ -475,6 +475,14 @@
       align-content: start;
     }
 
+    .sidebar-contact {
+      display: grid;
+      gap: 1.1rem;
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
     .content-column > section,
     .content-column > .anchor-offset {
       margin-bottom: 1.9rem;
@@ -766,11 +774,8 @@
       color: #e5e7eb;
       border-radius: var(--radius-xl);
       padding: 1.3rem 1.4rem 1.4rem;
-      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.7);
-      position: sticky;
-      top: 88px;
-      font-size: 0.9rem;
-    }
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.7);      position: static;
+      font-size: 0.9rem;    }
 
     .sidebar-stack {
       display: contents;
@@ -956,6 +961,10 @@
 
 
       .aside-card {
+        position: static;
+      }
+
+      .sidebar-contact {
         position: static;
       }
 
@@ -1393,8 +1402,8 @@
           <div class="hero-thumbnail-card">
             <img src="./Diskursive Aushandlung des Dystopischen.png" alt="Projektbild" class="hero-thumbnail">
           </div>
-
-          <details class="glossary-card">
+          <div class="sidebar-contact">
+            <details class="glossary-card">
             <summary>Begriffe kurz erklärt</summary>
             <div class="glossary-content">
               <article class="glossary-entry">
@@ -1448,7 +1457,7 @@
             </div>
           </details>
 
-          <aside class="aside-card anchor-offset" id="kontakt">
+            <aside class="aside-card anchor-offset" id="kontakt">
           <div class="aside-label">Kontakt &amp; Kurzprofil</div>
           <div class="aside-title">Ansprechperson für das Projekt</div>
 
@@ -1494,6 +1503,12 @@
             <strong>Hinweis:</strong> Diese Seite dient als kompaktes Informationsangebot zum Dissertationsprojekt und kann in Ausschreibungen, Calls und Bewerbungen verlinkt werden.
           </div>
         </aside>
+          </div>
+
+
+          
+
+          
         </aside>
       </div>
     </main>

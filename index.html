@@ -263,40 +263,96 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Kleine Begriffserklärung innerhalb der großen Projektbox */
-    .term-info {
-      margin: 0 0 1.15rem;
-      padding: 0.95rem 1rem;
+    /* Aufklappbare Begriffserklärungen in der rechten Hero-Spalte */
+    .glossary-card {
       background: linear-gradient(
-        135deg,
-        rgba(65, 84, 241, 0.09),
-        rgba(255, 255, 255, 0.72)
+        145deg,
+        rgba(255, 255, 255, 0.98),
+        rgba(238, 240, 255, 0.96)
       );
-      border: 1px solid rgba(65, 84, 241, 0.24);
-      border-left: 4px solid var(--accent);
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(40, 50, 165, 0.07);
+      border: 1px solid rgba(65, 84, 241, 0.22);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 18px 38px rgba(40, 50, 165, 0.09);
+      overflow: hidden;
     }
 
-    .term-info__label {
-      display: block;
-      margin-bottom: 0.3rem;
+    .glossary-card summary {
+      position: relative;
+      padding: 1rem 3rem 1rem 1.2rem;
       color: var(--accent-dark);
-      font-size: 0.74rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
     }
 
-    .term-info p {
-      margin: 0;
-      color: var(--text);
+    .glossary-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .glossary-card summary::after {
+      content: "+";
+      position: absolute;
+      top: 50%;
+      right: 1.2rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(65, 84, 241, 0.1);
+      transform: translateY(-50%);
+      transition: transform var(--transition-fast);
+    }
+
+    .glossary-card[open] summary::after {
+      content: "−";
+    }
+
+    .glossary-content {
+      padding: 0 1.2rem 1.2rem;
+      border-top: 1px solid rgba(65, 84, 241, 0.14);
+    }
+
+    .glossary-entry {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .glossary-entry:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .glossary-entry h4 {
+      margin-bottom: 0.3rem;
+      color: #0f172a;
       font-size: 0.88rem;
+    }
+
+    .glossary-entry p,
+    .glossary-entry li {
+      color: var(--text-muted);
+      font-size: 0.82rem;
       line-height: 1.55;
     }
 
-    .term-info strong {
-      font-weight: 700;
+    .glossary-entry ul,
+    .glossary-entry ol {
+      margin-top: 0.4rem;
+      padding-left: 1.15rem;
+    }
+
+    .glossary-entry li {
+      margin-bottom: 0.25rem;
+    }
+
+    .glossary-source {
+      display: block;
+      margin-top: 0.4rem;
+      color: #7c8294;
+      font-size: 0.75rem;
     }
 
     .hero-tags {
@@ -550,6 +606,35 @@
       gap: 0.6rem 1.2rem;
       font-size: 0.88rem;
       margin-top: 0.35rem;
+    }
+
+    .literature-block {
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .literature-block > strong {
+      display: block;
+      margin-bottom: 0.55rem;
+    }
+
+    .literature-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .literature-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.26rem 0.65rem;
+      border: 1px solid rgba(65, 84, 241, 0.2);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      line-height: 1.3;
     }
 
     .status-grid {
@@ -823,10 +908,6 @@
         font-size: 1.8rem;
       }
 
-      .term-info {
-        padding: 0.85rem 0.9rem;
-      }
-
       .two-column-list {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -889,36 +970,6 @@
           <p class="hero-sub">
             Das Projekt untersucht, wie Spieler:innen Dystopien, Unsicherheiten sowie moralische, gesellschaftliche und emotionale Fragestellungen in narrativen und decision-basierten Spielen (u. a. <em>The Last of Us</em>, <em>Detroit: Become Human</em>, <em>Metro 2033</em>, <em>Fallout</em>, <em>Frostpunk</em>, <em>This War of Mine</em>, <em>The Walking Dead: The Telltale Series</em>) sprechen und wie sie sich dabei sprachlich positionieren, aufeinander Bezug nehmen und Resonanz erzeugen. Im Fokus stehen diskursive Aushandlungsprozesse und ihre Bedeutung für ludonarrative und game-studies-bezogene Theorien von Agency, Moral und Narration.
           </p>
-
-          <div class="project-card">
-            <!-- Kleine Box innerhalb der großen Projektbox -->
-            <div class="term-info">
-              <span class="term-info__label">Begriffserklärung</span>
-              <li>
-                Mit <strong>Positionierungs- und Resonanzpraktiken</strong> sind
-                sprachliche Formen des Sich-Positionierens, Aufeinander-Beziehens
-                und Reagierens in Community-Diskursen gemeint.
-              </li>
-              <li>
-              <i><strong>Agency</strong> is the ability to have control and influence over the choices made in our everyday lives [1]. We exert agency to pursue goals, make decisions, and ultimately shape our destinies.</i> (Joshi et al. 2025: 1)               
-              </li>
-              <li>
-                Gerald Farca (2018) unterscheidet zwischen vier Formen von <strong>Videospieldystopien</strong>
-                <ol>1. Videogames as anti-utopia</ol>
-                <ol>2. Videogames as classical dystopia</ol>
-                <ol>3. Videogames as  critical dystopia variant 1</ol>
-                <ol>4. Videogames as critical dystopia variant 2</ol>
-              Für das Projekt wird sich mit den kritischen Dystopievarianten auseinandergesetzt, da ihnen eine ästhetische Komplexität, das Element der Hoffnung und, im Falle der zweiten Variante, ludische Entscheidungsmacht zugeschrieben werden. Diese Dystopievarianten bieten also ein deutlich höheres Potenzial, emanzipierte Spielformen hervorzubringen.
-              </li>
-              <li>
-                Die <strong>emanzipierte spielende Person</strong>
-              <ol>1. The emancipated player enjoys and understands.
-              <ol>2. The category of the emancipated player is closely tied to an aesthetic complexity of video games […].</ol>
-              <ol>3. The emancipated player slumbers in all empirical players.</ol>
-              <ol>4. The emancipated player expresses herself through play as she engages in a  creative dialectic with the implied player (a playful trial action).</ol>
-              <ol>5. The emancipated player frees herself from a confining perception and interpretation of video games. (S. 199)</ol>
-            </li>
-            </div>
 
           <div class="hero-tags">
             <span class="hero-tag">Ludonarrative Spiele</span>
@@ -988,6 +1039,60 @@
               </li>
             </ul>
           </article>
+
+          <details class="glossary-card">
+            <summary>Begriffe kurz erklärt</summary>
+            <div class="glossary-content">
+              <article class="glossary-entry">
+                <h4>Positionierungs- und Resonanzpraktiken</h4>
+                <p>
+                  Damit sind sprachliche Formen des Sich-Positionierens,
+                  Aufeinander-Beziehens und Reagierens in Community-Diskursen
+                  gemeint.
+                </p>
+              </article>
+
+              <article class="glossary-entry">
+                <h4>Agency</h4>
+                <p>
+                  Agency bezeichnet die Fähigkeit, Kontrolle und Einfluss auf
+                  Entscheidungen auszuüben, Ziele zu verfolgen und Handlungen
+                  wirksam mitzugestalten.
+                </p>
+                <span class="glossary-source">Nach Joshi et al. (2025: 1)</span>
+              </article>
+
+              <article class="glossary-entry">
+                <h4>Kritische Videospieldystopien</h4>
+                <p>
+                  Gerald Farca unterscheidet vier Formen von Videospieldystopien:
+                </p>
+                <ol>
+                  <li>Videogames as anti-utopia</li>
+                  <li>Videogames as classical dystopia</li>
+                  <li>Videogames as critical dystopia, Variante 1</li>
+                  <li>Videogames as critical dystopia, Variante 2</li>
+                </ol>
+                <p>
+                  Das Projekt konzentriert sich auf die beiden kritischen
+                  Varianten, denen ästhetische Komplexität, Hoffnung und – in
+                  Variante 2 – ludische Entscheidungsmacht zugeschrieben werden.
+                </p>
+                <span class="glossary-source">Nach Farca (2018)</span>
+              </article>
+
+              <article class="glossary-entry">
+                <h4>Emanzipierte spielende Person</h4>
+                <p>
+                  Farcas Konzept beschreibt eine spielende Person, die ein Spiel
+                  genießt und versteht, sich kreativ mit der im Spiel angelegten
+                  Spielerrolle auseinandersetzt und sich von einengenden
+                  Wahrnehmungs- und Deutungsmustern lösen kann.
+                </p>
+                <span class="glossary-source">Nach Farca (2018: 199)</span>
+              </article>
+            </div>
+          </details>
         </aside>
       </section>
 
@@ -1035,6 +1140,15 @@
                     <li>Feinanalysen von Schlüsselpassagen</li>
                     <li>Interviews mit Spieler:innen</li>
                   </ul>
+                </div>
+              </div>
+
+              <div class="literature-block">
+                <strong>Zentrale Literatur</strong>
+                <div class="literature-chips">
+                  <span class="literature-chip">Farca (2018)</span>
+                  <span class="literature-chip">Joshi et al. (2025)</span>
+                  <!-- Hier können weitere zentrale Titel ergänzt werden. -->
                 </div>
               </div>
             </div>
@@ -1281,7 +1395,7 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <div>© <span id="year"></span> – Dissertationsprojekt „Diskursive Aushandlung von Unsicherheit: Reflexionen in Spieler:innen-Communities narrativer Computerspiele“</div>
+        <div>© <span id="year"></span> – Dissertationsprojekt „Diskursive Aushandlung des Dystopischen“</div>
         <div class="footer-links">
           <a href="#projekt">Nach oben</a>
         </div>

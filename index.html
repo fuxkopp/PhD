@@ -453,7 +453,7 @@
     }
 
     .hero-side {
-      display: block;
+      display: contents;
     }
 
     .page-layout {
@@ -503,13 +503,34 @@
     .contact-card .details-body {
       margin-top: 1rem;
     }
-.sidebar-contact {
+    .sidebar-contact {
       display: grid;
       gap: 1.1rem;
       position: sticky;
       top: 88px;
       align-self: start;
       z-index: 2;
+    
+      max-height: calc(100vh - 104px);
+      overflow-y: auto;
+      padding-right: 0.35rem;
+      padding-bottom: 0.4rem;
+    
+      scrollbar-width: thin;
+      scrollbar-color: rgba(65, 84, 241, 0.28) transparent;
+    }
+    
+    .sidebar-contact::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .sidebar-contact::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .sidebar-contact::-webkit-scrollbar-thumb {
+      background: rgba(65, 84, 241, 0.28);
+      border-radius: 999px;
     }
 
     .content-column > section,

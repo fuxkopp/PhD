@@ -749,19 +749,26 @@
 
     .literature-list {
       margin: 0;
-      padding: 0.1rem 1.25rem 1rem 2.1rem;
+      padding: 0.45rem 1.15rem 0.6rem 2.15rem;
       border-top: 1px solid var(--border-subtle);
-      font-size: 0.9rem;
-    }
-    
-    .literature-list li {
-      margin-top: 0.45rem;
-      padding-left: 0.15rem;
+      font-size: 0.82rem;
       line-height: 1.45;
     }
-    
-    .literature-list li:first-child {
-      margin-top: 0.6rem;
+
+    .literature-list li {
+      margin: 0;
+      padding: 0.48rem 0 0.48rem 0.12rem;
+      line-height: inherit;
+      border-bottom: 1px solid rgba(224, 227, 240, 0.7);
+    }
+
+    .literature-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0.25rem;
+    }
+
+    .literature-list em {
+      color: #111827;
     }
 
     .status-grid {
@@ -1236,7 +1243,6 @@
                 <details class="literature-details">
                   <summary>Literatur</summary>
                   <ul class="literature-list">
-                  <ul>
                     <li>Beißwenger, Michael/Lemnitzer, Lothar/Müller-Spitzer, Carolin (Hg.) (2022): <em>Forschen in der Linguistik: Eine Methodeneinführung für das Germanistik-Studium</em> (= 5711). Paderborn: UTB.</li>
                     <li>Beißwenger, Michael/Lüngen, Harald/Meier-Vieracker, Simon/Steinsiek, Sarah/Storrer, Angelika/Herzberg, Laura (2025): <em>Korpusgestützte Analyse internetbasierter Kommunikation: Eine Einführung.</em> Stuttgart: J.B. Metzler.</li>
                     <li>Bauer, René/Suter, Beat (2021): Narrative Mechanics – Strategies and Meanings in Games and Real Life. In: Suter, Beat/Bauer, René/Kocher, Mela (Hg.): <em>Narrative Mechanics – Strategies and Meanings in Games and Real Life.</em> Bielefeld: transcript Verlag.</li>
@@ -1266,6 +1272,7 @@
                
                 </details>
               </div>
+            </div>
           </section>
 
           <section class="anchor-offset" id="korpus">

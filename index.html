@@ -503,40 +503,43 @@
     .contact-card .details-body {
       margin-top: 1rem;
     }
-    .sidebar-contact {
-      display: grid;
-      gap: 1.1rem;
-      position: sticky;
-      top: 88px;
-      align-self: start;
-      z-index: 2;
-    
-      max-height: calc(100vh - 104px);
-      overflow-y: auto;
-      padding-right: 0.35rem;
-      padding-bottom: 0.4rem;
-    
-      scrollbar-width: thin;
-      scrollbar-color: rgba(65, 84, 241, 0.28) transparent;
-    }
-    
-    .sidebar-contact::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .sidebar-contact::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    .sidebar-contact::-webkit-scrollbar-thumb {
-      background: rgba(65, 84, 241, 0.28);
-      border-radius: 999px;
-    }
 
-    .content-column > section,
-    .content-column > .anchor-offset {
-      margin-bottom: 1.9rem;
-    }
+    .sidebar-contact {
+    display: grid;
+    gap: 1.1rem;
+    position: sticky;
+    top: 88px;
+    align-self: start;
+    z-index: 2;
+  
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+  
+    padding-right: 0.2rem;
+    padding-bottom: 0.4rem;
+  
+    background: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(65, 84, 241, 0.22) transparent;
+  }
+  
+  .sidebar-contact::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .sidebar-contact::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .sidebar-contact::-webkit-scrollbar-thumb {
+    background: rgba(65, 84, 241, 0.22);
+    border-radius: 999px;
+  }
+  
+      .content-column > section,
+      .content-column > .anchor-offset {
+        margin-bottom: 1.9rem;
+      }
 
 
     .hero-thumbnail-card {
